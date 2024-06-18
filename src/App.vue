@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Formulario @nueva-cita="agregar" />
-    <div class="cards-container">
+    <div class="cards-container" v-if="citas.length > 0" >
       <Card
         v-for="(cita, index) in citas"
         :key="index"
@@ -13,6 +13,7 @@
         @eliminar-cita="eliminar(index)"
       />
     </div>
+    <p v-else class="no-citas"> Aun no hay citas registradas</p>
   </div>
 </template>
 
@@ -53,5 +54,10 @@ export default {
   gap: 1rem;
   justify-content: center;
   margin-top: 2rem;
+}
+.no-citas {
+  color: red;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 </style>
